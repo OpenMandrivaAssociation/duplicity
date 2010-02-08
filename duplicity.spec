@@ -6,6 +6,7 @@ License:	GPLv2
 Group:		Archiving/Backup
 URL:		http://www.nongnu.org/duplicity/
 Source:		http://savannah.nongnu.org/download/duplicity/%{name}-%{version}.tar.gz
+# (misc) patch was sent upstream : https://bugs.launchpad.net/duplicity/+bug/518629
 Patch0:		patch-64bits.patch
 Requires:	gnupg
 BuildRequires:	python-devel
@@ -35,18 +36,16 @@ rm -rf %{buildroot}
 
 python setup.py install --prefix=%{buildroot}%{_prefix}
 
-%find_lang %{name}
+rm -Rf %{buildroot}%{_datadir}/doc/duplicity-%{version}
 
-%if %mdkversion > 200800
-mv %{buildroot}%{_datadir}/doc/duplicity-%{version} %{buildroot}%{_datadir}/doc/%{name}
-%endif
+%find_lang %{name}
 
 %clean
 rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc CHANGELOG COPYING README
+%doc CHANGELOG COPYING README LOG-README REPO-README tarfile-LICENSE
 %{_bindir}/rdiffdir
 %{_bindir}/duplicity
 %{_mandir}/man1/*
