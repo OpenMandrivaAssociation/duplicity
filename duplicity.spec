@@ -1,7 +1,3 @@
-%if %mdkversion < 200610
-%define py_platsitedir %{_libdir}/python%{pyver}/site-packages/
-%endif
-
 Summary:	Untrusted/encrypted backup using rsync algorithm
 Version:	0.6.06
 Name:		duplicity
@@ -55,6 +51,4 @@ rm -rf %{buildroot}
 %{_bindir}/duplicity
 %{_mandir}/man1/*
 %{py_platsitedir}/duplicity
-%if %mdkversion >= 200700
 %{py_platsitedir}/*.egg-info
-%endif
