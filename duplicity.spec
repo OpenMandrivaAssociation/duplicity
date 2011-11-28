@@ -1,7 +1,7 @@
 Summary:	Untrusted/encrypted backup using rsync algorithm
-Version:	0.6.15
+Version:	0.6.17
 Name:		duplicity
-Release:	%mkrel 1
+Release:	1
 License:	GPLv2
 Group:		Archiving/Backup
 URL:		http://www.nongnu.org/duplicity/
@@ -27,7 +27,7 @@ links.
 %prep
 
 %setup -q
-%patch0 -p0
+%patch0 -p1
 
 %build
 python setup.py build
@@ -41,12 +41,9 @@ rm -Rf %{buildroot}%{_datadir}/doc/duplicity-%{version}
 
 %find_lang %{name}
 
-%clean
-rm -rf %{buildroot}
-
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc CHANGELOG COPYING README LOG-README REPO-README tarfile-LICENSE
+%doc CHANGELOG COPYING README tarfile-LICENSE
 %{_bindir}/rdiffdir
 %{_bindir}/duplicity
 %{_mandir}/man1/*
