@@ -1,18 +1,17 @@
 Summary:	Untrusted/encrypted backup using rsync algorithm
-Version:	0.6.17
+Version:	0.6.18
 Name:		duplicity
 Release:	1
 License:	GPLv2
 Group:		Archiving/Backup
 URL:		http://www.nongnu.org/duplicity/
-Source:		http://savannah.nongnu.org/download/duplicity/%{name}-%{version}.tar.gz
-Source1:		http://savannah.nongnu.org/download/duplicity/%{name}-%{version}.tar.gz.sig
+Source0:	http://savannah.nongnu.org/download/duplicity/%{name}-%{version}.tar.gz
+Source1:	http://savannah.nongnu.org/download/duplicity/%{name}-%{version}.tar.gz.sig
 # (misc) patch was sent upstream : https://bugs.launchpad.net/duplicity/+bug/518629
 Patch0:		patch-64bits.patch
 Requires:	gnupg
 BuildRequires:	python-devel
 BuildRequires:	librsync-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Duplicity incrementally backs up files and directory by encrypting tar-format
@@ -33,8 +32,6 @@ links.
 python setup.py build
 
 %install
-rm -rf %{buildroot}
-
 python setup.py install --prefix=%{buildroot}%{_prefix}
 
 rm -Rf %{buildroot}%{_datadir}/doc/duplicity-%{version}
@@ -42,7 +39,6 @@ rm -Rf %{buildroot}%{_datadir}/doc/duplicity-%{version}
 %find_lang %{name}
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc CHANGELOG COPYING README tarfile-LICENSE
 %{_bindir}/rdiffdir
 %{_bindir}/duplicity
