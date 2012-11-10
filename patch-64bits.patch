@@ -1,0 +1,21 @@
+diff --git a/setup.py b/setup.py
+index 0ca110c..380893b 100755
+--- a/setup.py
++++ b/setup.py
+@@ -30,6 +30,7 @@ if sys.version_info[:2] < (2,4):
+     sys.exit(1)
+ 
+ incdir_list = libdir_list = None
++libname = sys.lib
+ 
+ if os.name == 'posix':
+     LIBRSYNC_DIR = os.environ.get('LIBRSYNC_DIR', '')
+@@ -40,7 +41,7 @@ if os.name == 'posix':
+             sys.argv.remove(arg)
+     if LIBRSYNC_DIR:
+         incdir_list = [os.path.join(LIBRSYNC_DIR, 'include')]
+-        libdir_list = [os.path.join(LIBRSYNC_DIR, 'lib')]
++        libdir_list = [os.path.join(LIBRSYNC_DIR, 'libname')]
+ 
+ data_files = [('share/man/man1',
+                ['bin/duplicity.1',
