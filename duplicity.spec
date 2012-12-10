@@ -45,3 +45,89 @@ rm -Rf %{buildroot}%{_datadir}/doc/duplicity-%{version}
 %{_mandir}/man1/*
 %{py_platsitedir}/duplicity
 %{py_platsitedir}/*.egg-info
+
+
+%changelog
+* Wed Jun 13 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.6.19-1
++ Revision: 805384
+- version update 0.6.19
+
+* Fri Mar 02 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.6.18-1
++ Revision: 781769
+- version update 0.6.18
+
+* Mon Nov 28 2011 Alexander Khrukin <akhrukin@mandriva.org> 0.6.17-1
++ Revision: 734952
+- version update
+
+* Fri Oct 07 2011 Andrey Bondrov <abondrov@mandriva.org> 0.6.15-1
++ Revision: 703460
+- New version: 0.6.15
+
+* Tue Mar 15 2011 Stéphane Téletchéa <steletch@mandriva.org> 0.6.12-1
++ Revision: 645167
+- update to new version 0.6.12
+
+* Tue Nov 02 2010 Michael Scherer <misc@mandriva.org> 0.6.08b-2mdv2011.0
++ Revision: 592382
+- rebuild for python 2.7
+
+  + Giuseppe Ghibò <ghibo@mandriva.com>
+    - Update to release 0.6.08b.
+
+* Mon Mar 01 2010 Frederik Himpe <fhimpe@mandriva.org> 0.6.07-1mdv2010.1
++ Revision: 513072
+- update to new version 0.6.07
+
+  + Michael Scherer <misc@mandriva.org>
+    - clean old check on unsupported versions
+
+* Fri Nov 13 2009 Frederik Himpe <fhimpe@mandriva.org> 0.6.06-1mdv2010.1
++ Revision: 465924
+- update to new version 0.6.06
+
+* Sat Aug 29 2009 Frederik Himpe <fhimpe@mandriva.org> 0.6.05-1mdv2010.0
++ Revision: 422302
+- update to new version 0.6.05
+
+* Wed Aug 12 2009 Frederik Himpe <fhimpe@mandriva.org> 0.6.04-1mdv2010.0
++ Revision: 415724
+- update to new version 0.6.04
+
+* Fri Jul 31 2009 Frederik Himpe <fhimpe@mandriva.org> 0.6.03-1mdv2010.0
++ Revision: 405214
+- update to new version 0.6.03
+
+* Sat Jul 04 2009 Frederik Himpe <fhimpe@mandriva.org> 0.6.01-1mdv2010.0
++ Revision: 392364
+- update to new version 0.6.01
+
+* Tue Jun 09 2009 Frederik Himpe <fhimpe@mandriva.org> 0.6.00-1mdv2010.0
++ Revision: 384470
+- update to new version 0.6.00
+
+* Thu May 21 2009 Frederik Himpe <fhimpe@mandriva.org> 0.5.18-1mdv2010.0
++ Revision: 378386
+- update to new version 0.5.18
+
+* Tue May 05 2009 Frederik Himpe <fhimpe@mandriva.org> 0.5.17-1mdv2010.0
++ Revision: 372223
+- update to new version 0.5.17
+
+* Mon Mar 16 2009 Frederik Himpe <fhimpe@mandriva.org> 0.5.12-1mdv2009.1
++ Revision: 355821
+- update to new version 0.5.12
+
+* Sat Mar 14 2009 Frederik Himpe <fhimpe@mandriva.org> 0.5.11-1mdv2009.1
++ Revision: 355055
+- update to new version 0.5.11
+
+* Sat Feb 14 2009 Oden Eriksson <oeriksson@mandriva.com> 0.5.08-1mdv2009.1
++ Revision: 340252
+- 0.5.08
+- fixed the spec file
+
+* Fri Jan 30 2009 Jérôme Soyer <saispo@mandriva.org> 0.5.06-1mdv2009.1
++ Revision: 335634
+- import duplicity
+
