@@ -8,7 +8,7 @@ URL:		http://www.nongnu.org/duplicity/
 Source0:	http://savannah.nongnu.org/download/duplicity/%{name}-%{version}.tar.gz
 Source1:	http://savannah.nongnu.org/download/duplicity/%{name}-%{version}.tar.gz.sig
 
-BuildRequires:	lib64rsync-devel
+BuildRequires:	%{_lib}rsync-devel
 BuildRequires:	pkgconfig(python)
 BuildRequires:	python3dist(setuptools)
 #BuildRequires:	python3dist(setuptools-scm)
