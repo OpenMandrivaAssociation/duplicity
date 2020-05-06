@@ -1,17 +1,29 @@
 Summary:	Untrusted/encrypted backup using rsync algorithm
-Version:	0.6.19
+Version:	0.8.13
 Name:		duplicity
-Release:	2
+Release:	1
 License:	GPLv2
 Group:		Archiving/Backup
 URL:		http://www.nongnu.org/duplicity/
 Source0:	http://savannah.nongnu.org/download/duplicity/%{name}-%{version}.tar.gz
 Source1:	http://savannah.nongnu.org/download/duplicity/%{name}-%{version}.tar.gz.sig
-# (misc) patch was sent upstream : https://bugs.launchpad.net/duplicity/+bug/518629
-Patch0:		patch-64bits.patch
-Requires:	gnupg
-BuildRequires:	python-devel
-BuildRequires:	librsync-devel
+
+BuildRequires:	rsync-devel
+BuildRequires:	pkgconfig(python)
+BuildRequires:	python3dist(setuptools)
+#BuildRequires:	python3dist(setuptools-scm)
+BuildRequires:	python3dist(pytest-runner)
+
+Requires:	gnupg2
+Requires:	ncftp
+Requires:	openssh-clients
+Requires:	python3dist(boto)
+Requires:	python3dist(lockfile)
+Requires:	rsync
+Requires:	python3dist(pygobject)
+Requires:	python3dist(paramiko)
+Requires:	python3dist(pexpect)
+
 
 %description
 Duplicity incrementally backs up files and directory by encrypting tar-format
@@ -24,28 +36,28 @@ full unix permissions, directories, symbolic links, fifos, etc., but not hard
 links.
 
 %prep
-
 %setup -q
-%patch0 -p1
+%autopatch -p1
 
 %build
-python setup.py build
+%py_build
 
 %install
-python setup.py install --prefix=%{buildroot}%{_prefix}
+%py_install
 
-rm -Rf %{buildroot}%{_datadir}/doc/duplicity-%{version}
+#handle docs in files section
+rm -Rf %{buildroot}%{_docdir}
 
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc CHANGELOG COPYING README tarfile-LICENSE
+%doc CHANGELOG README
+%{_mandir}/man1/%{name}*
+%{_mandir}/man1/rdiffdir*
 %{_bindir}/rdiffdir
 %{_bindir}/duplicity
-%{_mandir}/man1/*
-%{py_platsitedir}/duplicity
-%{py_platsitedir}/*.egg-info
-
+%{python_sitearch}/duplicity/
+%{python_sitearch}/*.egg-info
 
 %changelog
 * Wed Jun 13 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.6.19-1
