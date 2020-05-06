@@ -1,2 +1,3 @@
 sources:
-  "duplicity-0.6.19.tar.gz": 07d72680d6b4850101a436f679793521a51f41ac
+  duplicity-0.8.13.tar.gz.sig: 1d034d5b624941a648def3b5ddbcfcd5c170859f
+  duplicity-0.8.13.tar.gz: c5ab32bda939b82b99ff3b2686ca5965c7dbbc73
