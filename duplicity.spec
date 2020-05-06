@@ -12,6 +12,7 @@ BuildRequires:	%{_lib}rsync-devel
 BuildRequires:	pkgconfig(python)
 BuildRequires:	python3dist(setuptools)
 #BuildRequires:	python3dist(setuptools-scm)
+BuildRequires:  python-setuptools_scm
 BuildRequires:	python3dist(pytest-runner)
 
 Requires:	gnupg2
