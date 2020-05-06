@@ -24,6 +24,7 @@ Requires:	rsync
 Requires:	python3dist(pygobject)
 Requires:	python3dist(paramiko)
 Requires:	python3dist(pexpect)
+Requires: python3dist(fasteners)
 
 
 %description
