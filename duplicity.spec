@@ -53,7 +53,7 @@ rm -Rf %{buildroot}%{_docdir}
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc CHANGELOG README
+%doc CHANGELOG.md README.md
 %{_mandir}/man1/%{name}*
 %{_mandir}/man1/rdiffdir*
 %{_bindir}/rdiffdir
