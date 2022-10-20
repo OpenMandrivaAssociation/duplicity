@@ -1,12 +1,14 @@
 Summary:	Untrusted/encrypted backup using rsync algorithm
-Version:	1.0.0
+Version:	1.0.1
 Name:		duplicity
 Release:	1
 License:	GPLv2
 Group:		Archiving/Backup
 URL:		http://www.nongnu.org/duplicity/
-Source0:	http://savannah.nongnu.org/download/duplicity/%{name}-%{version}.tar.gz
-Source1:	http://savannah.nongnu.org/download/duplicity/%{name}-%{version}.tar.gz.sig
+Source0:  https://gitlab.com/duplicity/duplicity/-/archive/rel.%{version}/duplicity-rel.%{version}.tar.bz2
+# Looks like sources below are not updated anymore or updated but with delay. So let's use gitlab archives.
+#Source0:	http://savannah.nongnu.org/download/duplicity/%{name}-%{version}.tar.gz
+#Source1:	http://savannah.nongnu.org/download/duplicity/%{name}-%{version}.tar.gz.sig
 
 BuildRequires:	%{_lib}rsync-devel
 BuildRequires:	pkgconfig(python)
@@ -38,8 +40,7 @@ full unix permissions, directories, symbolic links, fifos, etc., but not hard
 links.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -n %{name}-rel.%{version} -p1
 
 %build
 %py_build
