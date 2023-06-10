@@ -1,5 +1,5 @@
 Summary:	Untrusted/encrypted backup using rsync algorithm
-Version:	1.0.1
+Version:	1.2.3
 Name:		duplicity
 Release:	1
 License:	GPLv2
