@@ -57,11 +57,8 @@ rm -Rf %{buildroot}%{_docdir}
 %files -f %{name}.lang
 %doc CHANGELOG.md README.md
 %{_mandir}/man1/%{name}*
-%{_mandir}/man1/rdiffdir*
-%{_bindir}/rdiffdir
 %{_bindir}/duplicity
 %{python_sitearch}/duplicity/
-%{python_sitearch}/*.egg-info
 
 %changelog
 * Wed Jun 13 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.6.19-1
