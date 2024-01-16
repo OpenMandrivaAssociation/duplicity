@@ -10,6 +10,7 @@ Source0:  https://gitlab.com/duplicity/duplicity/-/archive/rel.%{version}/duplic
 #Source0:	http://savannah.nongnu.org/download/duplicity/%{name}-%{version}.tar.gz
 #Source1:	http://savannah.nongnu.org/download/duplicity/%{name}-%{version}.tar.gz.sig
 
+BuildRequires:  gettext
 BuildRequires:	%{_lib}rsync-devel
 BuildRequires:	pkgconfig(python)
 BuildRequires:	python3dist(setuptools)
