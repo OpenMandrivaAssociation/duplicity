@@ -59,7 +59,7 @@ rm -Rf %{buildroot}%{_docdir}
 %{_mandir}/man1/%{name}*
 %{_bindir}/duplicity
 %{python_sitearch}/duplicity/
-%{python_sitearch}/duplicity-*.*.*.dev32.dist-info
+#{python_sitearch}/duplicity-*.*.*.dev32.dist-info
 
 %changelog
 * Wed Jun 13 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.6.19-1
