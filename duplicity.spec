@@ -1,10 +1,10 @@
 Summary:	Untrusted/encrypted backup using rsync algorithm
-Version:	2.2.2
+Version:	2.2.3
 Name:		duplicity
 Release:	1
 License:	GPLv2
 Group:		Archiving/Backup
-URL:		http://www.nongnu.org/duplicity/
+URL:		https://www.nongnu.org/duplicity/
 Source0:  https://gitlab.com/duplicity/duplicity/-/archive/rel.%{version}/duplicity-rel.%{version}.tar.bz2
 # Looks like sources below are not updated anymore or updated but with delay. So let's use gitlab archives.
 #Source0:	http://savannah.nongnu.org/download/duplicity/%{name}-%{version}.tar.gz
