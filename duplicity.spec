@@ -1,5 +1,5 @@
-Summary:	Untrusted/encrypted backup using rsync algorithm
-Version:	2.2.3
+Summary:	Duplicity backs directories by producing encrypted tar-format volumes and uploading them to a remote or local file server.
+Version:	3.0.0
 Name:		duplicity
 Release:	1
 License:	GPLv2
