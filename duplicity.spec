@@ -14,9 +14,12 @@ BuildRequires:  gettext
 BuildRequires:	%{_lib}rsync-devel
 BuildRequires:	pkgconfig(python)
 BuildRequires:	python3dist(setuptools)
+BuildRequires:	python3dist(pip)
+BuildRequires:	python3dist(wheel)
 #BuildRequires:	python3dist(setuptools-scm)
 BuildRequires:  python-setuptools_scm
 BuildRequires:	python3dist(pytest-runner)
+
 
 Requires:	gnupg2
 Requires:	ncftp
