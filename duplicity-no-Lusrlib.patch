@@ -1,0 +1,20 @@
+diff -up duplicity-rel.3.0.3.2/setup.py.omv~ duplicity-rel.3.0.3.2/setup.py
+--- duplicity-rel.3.0.3.2/setup.py.omv~	2025-01-21 23:34:38.490038206 +0100
++++ duplicity-rel.3.0.3.2/setup.py	2025-01-21 23:34:56.837692039 +0100
+@@ -84,11 +84,11 @@ if os.environ.get("READTHEDOCS", None) i
+             )
+         )
+ 
+-    # add standard locs
+-    incdir_list.append("/usr/local/include")
+-    libdir_list.append("/usr/local/lib")
+-    incdir_list.append("/usr/include")
+-    libdir_list.append("/usr/lib")
++    # don't add standard locs
++    #incdir_list.append("/usr/local/include")
++    #libdir_list.append("/usr/local/lib")
++    #incdir_list.append("/usr/include")
++    #libdir_list.append("/usr/lib")
+ 
+     # build the librsync extension
+     ext_modules = [
