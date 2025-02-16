@@ -1,5 +1,5 @@
 Summary:	Duplicity backs directories by producing encrypted tar-format volumes and uploading them to a remote or local file server.
-Version:	3.0.3.2
+Version:	3.0.4
 Name:		duplicity
 Release:	1
 License:	GPLv2
@@ -13,27 +13,20 @@ Source0:  https://gitlab.com/duplicity/duplicity/-/archive/rel.%{version}/duplic
 BuildRequires:  gettext
 BuildRequires:	%{_lib}rsync-devel
 BuildRequires:	pkgconfig(python)
-BuildRequires:	python3dist(setuptools)
-BuildRequires:	python3dist(pip)
-BuildRequires:	python3dist(wheel)
-#BuildRequires:	python3dist(setuptools-scm)
-BuildRequires:  python-setuptools_scm
-BuildRequires:	python3dist(pytest-runner)
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(pip)
+BuildRequires:	python%{pyver}dist(wheel)
+BuildRequires:	python%{pyver}dist(setuptools-scm)
+BuildRequires:	python%{pyver}dist(pytest-runner)
 
 
 Requires:	gnupg2
-Requires:	ncftp
-Requires:	openssh-clients
-Requires:	python3dist(boto)
-Requires:	python3dist(lockfile)
-Requires:	rsync
-Requires:	python3dist(pygobject)
-Requires:	python3dist(paramiko)
-Requires:	python3dist(pexpect)
-Requires: python3dist(fasteners)
+
+Requires:	%{name}-backend = %{EVRD}
 
 %patchlist
 duplicity-no-Lusrlib.patch
+duplicity-relax-atom-dep.patch
 
 %description
 Duplicity incrementally backs up files and directory by encrypting tar-format
@@ -59,9 +52,58 @@ rm -Rf %{buildroot}%{_docdir}
 
 %find_lang %{name}
 
-%files -f %{name}.lang
+D="$(pwd)"
+cd %{buildroot}%{python_sitearch}/duplicity/backends
+for i in *; do
+	if echo $i |grep -q 'backend.py$' && [ "$i" != "_testbackend.py" ]; then
+		BACKEND="$(echo ${i/backend.py/} |sed -e 's,_$,,')"
+		case $BACKEND in
+		gio)
+			EXTRA_DEPS="Requires: python%{pyver}dist(pygobject)"
+			;;
+		rsync)
+			EXTRA_DEPS="Requires: rsync"
+			;;
+		ssh*)
+			EXTRA_DEPS="Requires: openssh-clients"
+			;;
+		ncftp)
+			EXTRA_DEPS="Requires: ncftp"
+			;;
+		lftp)
+			EXTRA_DEPS="Requires: lftp"
+			;;
+		*)
+			EXTRA_DEPS=""
+			;;
+		esac
+		sed -e 's,^@,%%,g' >%{specpartsdir}/${BACKEND}.specpart <<EOF
+@package backend-${BACKEND}
+Summary: ${BACKEND} backend for the duplicity backup tool
+Group:	Archiving/Backup
+Provides: %{name}-backend = %{EVRD}
+$EXTRA_DEPS
+
+@description backend-${BACKEND}
+${BACKEND} backend for the duplicity backup tool
+
+@files backend-${BACKEND}
+%{python_sitearch}/duplicity/backends/$i
+EOF
+	else
+		echo %{python_sitearch}/duplicity/backends/$i >>$D/backends-core.files
+	fi
+done
+
+
+%files -f %{name}.lang -f backends-core.files
 %doc CHANGELOG.md README.md
 %{_mandir}/man1/%{name}*
 %{_bindir}/duplicity
-%{python_sitearch}/duplicity/
+%dir %{python_sitearch}/duplicity
+%{python_sitearch}/duplicity/*.so
+%{python_sitearch}/duplicity/*.py
+%{python_sitearch}/duplicity/*.c
+%{python_sitearch}/duplicity/__pycache__
 %{python_sitearch}/duplicity-%{version}.dist-info
+%dir %{python_sitearch}/duplicity/backends
