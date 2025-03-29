@@ -1,5 +1,5 @@
 Summary:	Duplicity backs directories by producing encrypted tar-format volumes and uploading them to a remote or local file server.
-Version:	3.0.4
+Version:	3.0.4.1
 Name:		duplicity
 Release:	1
 License:	GPLv2
