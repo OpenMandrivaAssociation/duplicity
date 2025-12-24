@@ -26,7 +26,7 @@ Requires:	%{name}-backend = %{EVRD}
 
 %patchlist
 duplicity-no-Lusrlib.patch
-duplicity-relax-atom-dep.patch
+#duplicity-relax-atom-dep.patch
 
 %description
 Duplicity incrementally backs up files and directory by encrypting tar-format
