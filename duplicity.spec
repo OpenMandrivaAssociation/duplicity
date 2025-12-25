@@ -1,7 +1,7 @@
 Summary:	Duplicity backs directories by producing encrypted tar-format volumes and uploading them to a remote or local file server.
-Version:	3.0.4.1
+Version:	3.0.6.3
 Name:		duplicity
-Release:	2
+Release:	1
 License:	GPLv2
 Group:		Archiving/Backup
 URL:		https://www.nongnu.org/duplicity/
