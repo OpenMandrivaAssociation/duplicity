@@ -10,6 +10,7 @@ Source0:  https://gitlab.com/duplicity/duplicity/-/archive/rel.%{version}/duplic
 #Source0:	http://savannah.nongnu.org/download/duplicity/%{name}-%{version}.tar.gz
 #Source1:	http://savannah.nongnu.org/download/duplicity/%{name}-%{version}.tar.gz.sig
 
+BuildSystem:	python
 BuildRequires:  gettext
 BuildRequires:	%{_lib}rsync-devel
 BuildRequires:	pkgconfig(python)
@@ -26,6 +27,7 @@ Requires:	%{name}-backend = %{EVRD}
 
 %patchlist
 duplicity-no-Lusrlib.patch
+duplicity-allow-newer-lxml.patch
 
 %description
 Duplicity incrementally backs up files and directory by encrypting tar-format
@@ -37,15 +39,7 @@ changed since the last backup.  Currently duplicity supports deleted files,
 full unix permissions, directories, symbolic links, fifos, etc., but not hard
 links.
 
-%prep
-%autosetup -n %{name}-rel.%{version} -p1
-
-%build
-%py_build
-
-%install
-%py_install
-
+%install -a
 #handle docs in files section
 rm -Rf %{buildroot}%{_docdir}
 

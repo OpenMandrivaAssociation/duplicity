@@ -1,0 +1,12 @@
+diff -up duplicity-rel.3.0.6.3/requirements.txt.omv~ duplicity-rel.3.0.6.3/requirements.txt
+--- duplicity-rel.3.0.6.3/requirements.txt.omv~	2025-12-30 11:15:08.383245438 +0100
++++ duplicity-rel.3.0.6.3/requirements.txt	2025-12-30 11:15:27.964071693 +0100
+@@ -20,7 +20,7 @@ httplib2
+ pysocks # optional httplib2 dep, needed for proxy support
+ jottalib
+ keyring
+-lxml<=5.4.0  # newer vers do not build on Ubuntu < 24.04
++lxml #<=5.4.0  # newer vers do not build on Ubuntu < 24.04 and we don't give a ****
+ mediafire
+ megatools
+ paramiko
