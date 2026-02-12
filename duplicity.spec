@@ -1,7 +1,7 @@
 Summary:	Duplicity backs directories by producing encrypted tar-format volumes and uploading them to a remote or local file server.
-Version:	3.0.6.3
+Version:	3.0.7
 Name:		duplicity
-Release:	2
+Release:	1
 License:	GPLv2
 Group:		Archiving/Backup
 URL:		https://www.nongnu.org/duplicity/
@@ -48,6 +48,7 @@ rm -Rf %{buildroot}%{_docdir}
 D="$(pwd)"
 cd %{buildroot}%{python_sitearch}/duplicity/backends
 for i in *; do
+	[[ $i == __pycache__ ]] && continue
 	if echo $i |grep -q 'backend.py$' && [ "$i" != "_testbackend.py" ]; then
 		BACKEND="$(echo ${i/backend.py/} |sed -e 's,_$,,')"
 		case $BACKEND in
@@ -82,9 +83,11 @@ ${BACKEND} backend for the duplicity backup tool
 
 @files backend-${BACKEND}
 %{python_sitearch}/duplicity/backends/$i
+%{python_sitearch}/duplicity/backends/__pycache__/${i/.py/*}
 EOF
 	else
 		echo %{python_sitearch}/duplicity/backends/$i >>$D/backends-core.files
+		ls -1 __pycache__/${i/.py/*} &>/dev/null && echo %{python_sitearch}/duplicity/backends/__pycache__/${i/.py/*} >>$D/backends-core.files
 	fi
 done
 
@@ -100,3 +103,4 @@ done
 %{python_sitearch}/duplicity/__pycache__
 %{python_sitearch}/duplicity-%{version}.dist-info
 %dir %{python_sitearch}/duplicity/backends
+%dir %{python_sitearch}/duplicity/backends/__pycache__
