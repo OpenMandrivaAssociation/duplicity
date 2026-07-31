@@ -1,5 +1,5 @@
 Summary:	Duplicity backs directories by producing encrypted tar-format volumes and uploading them to a remote or local file server.
-Version:	3.0.7
+Version:	3.1.0
 Name:		duplicity
 Release:	1
 License:	GPLv2
@@ -26,8 +26,8 @@ Requires:	gnupg2
 Requires:	%{name}-backend = %{EVRD}
 
 %patchlist
-duplicity-no-Lusrlib.patch
-duplicity-allow-newer-lxml.patch
+# dropped (no longer applies): duplicity-no-Lusrlib.patch
+# dropped (no longer applies): duplicity-allow-newer-lxml.patch
 
 %description
 Duplicity incrementally backs up files and directory by encrypting tar-format
