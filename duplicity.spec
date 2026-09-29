@@ -1,5 +1,5 @@
 Summary:	Duplicity backs directories by producing encrypted tar-format volumes and uploading them to a remote or local file server.
-Version:	3.1.0
+Version:	3.2.1
 Name:		duplicity
 Release:	1
 License:	GPLv2
@@ -18,6 +18,7 @@ BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:	python%{pyver}dist(pip)
 BuildRequires:	python%{pyver}dist(wheel)
 BuildRequires:	python%{pyver}dist(setuptools-scm)
+BuildRequires:	python%{pyver}dist(setuptools-gettext)
 BuildRequires:	python%{pyver}dist(pytest-runner)
 
 
