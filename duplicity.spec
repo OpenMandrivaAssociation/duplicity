@@ -27,6 +27,7 @@ Requires:	gnupg2
 Requires:	%{name}-backend = %{EVRD}
 
 %patchlist
+duplicity-librsync-no-hardcoded-search-dirs.patch
 # dropped (no longer applies): duplicity-no-Lusrlib.patch
 # dropped (no longer applies): duplicity-allow-newer-lxml.patch
 

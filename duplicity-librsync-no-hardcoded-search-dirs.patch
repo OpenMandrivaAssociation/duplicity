@@ -1,0 +1,18 @@
+--- a/setup.py	2026-09-28 18:59:41.000000000 +0200
++++ b/setup.py	2026-09-29 18:50:18.333642970 +0200
+@@ -83,11 +83,10 @@
+             )
+         )
+ 
+-    # add standard locs
+-    incdir_list.append("/usr/local/include")
+-    libdir_list.append("/usr/local/lib")
+-    incdir_list.append("/usr/include")
+-    libdir_list.append("/usr/lib")
++    # Do not hardcode the default search paths. librsync comes from the
++    # system librsync-devel package, so the compiler already knows where
++    # to look, and /usr/lib holds the i686 crti.o on x86_64, which makes
++    # ld.lld pick elf32-i386 and reject every 64-bit input.
+ 
+     # build the librsync extension
+     ext_modules = [
