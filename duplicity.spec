@@ -1,7 +1,7 @@
 Summary:	Duplicity backs directories by producing encrypted tar-format volumes and uploading them to a remote or local file server.
 Version:	3.2.1
 Name:		duplicity
-Release:	1
+Release:	2
 License:	GPLv2
 Group:		Archiving/Backup
 URL:		https://www.nongnu.org/duplicity/
@@ -13,7 +13,7 @@ Source0:  https://gitlab.com/duplicity/duplicity/-/archive/rel.%{version}/duplic
 BuildSystem:	python
 BuildRequires:  gettext
 BuildRequires:	%{_lib}rsync-devel
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:	python%{pyver}dist(pip)
 BuildRequires:	python%{pyver}dist(wheel)
@@ -28,6 +28,7 @@ Requires:	%{name}-backend = %{EVRD}
 
 %patchlist
 duplicity-librsync-no-hardcoded-search-dirs.patch
+duplicity-python-3.15.patch
 # dropped (no longer applies): duplicity-no-Lusrlib.patch
 # dropped (no longer applies): duplicity-allow-newer-lxml.patch
 
